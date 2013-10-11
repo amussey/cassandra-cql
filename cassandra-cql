@@ -14,8 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from sys import argv, exit
 from cassandra_cql import cql_execute
-from sys import argv
 
 if len(argv) < 4 or (len(argv) == 5 and argv[4] != '-f'):
     print '''
@@ -44,5 +44,11 @@ else:
         port = int(argv[2])
     except:
         print '{argv2} is not a valid port.'.format(argv2=argv[2])
+        sys.exit(-1)
+    cql_execute_result = cql_execute(host=argv[1],
+                                     port=port,
+                                     filename=argv[3],
+                                     force=(len(argv) > 4),
+                                     silent=False)
+    if not cql_execute_result:
         exit(-1)
-    cql_execute(host=argv[1], port=port, filename=argv[3], force=(len(argv) > 4))
