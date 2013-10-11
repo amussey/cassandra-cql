@@ -27,6 +27,6 @@ setup(
     install_requires=["cql"],
     packages=['cassandra_cql'],
     scripts = [
-        'scripts/cassandra-cql',
+        'cassandra-cql',
     ]
 )
