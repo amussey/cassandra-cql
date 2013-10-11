@@ -14,19 +14,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+'''A tool for importing *.cql files into a Cassandra database
+
+cassandra-cql is a Python-based tool for importing CQL3 *.cql
+files into Cassandra databases (much in the same way you can use
+mysql to import *.sql files).'''
+
 from distutils.core import setup
+
+doclines = __doc__.split("\n")
 
 setup(
     name='cassandra-cql',
-    version='1.0.0',
-    description=('A tool for importing a *.cql3 file into a Cassandra database'),
+    version='0.9.0',
+    description=doclines[0],
+    long_description="\n".join(doclines[2:]),
     keywords='python cql cassandra',
     author='Andrew Mussey',
     author_email='admin@ajama.org',
-    url='http://amussey.com',
+    url='https://github.com/amussey/cassandra-cql',
+    platforms=["any"],
+    license="http://www.apache.org/licenses/LICENSE-2.0",
     install_requires=["cql"],
     packages=['cassandra_cql'],
-    scripts = [
-        'cassandra-cql',
-    ]
+    scripts=['cassandra-cql']
 )
