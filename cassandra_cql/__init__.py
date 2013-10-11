@@ -33,7 +33,7 @@ def cql_execute(host, port, filename, force):
 
             try:
                 cursor.execute('{command};'.format(command=cql_command.replace('\n', ' ')))
-                print '{color_start}Success!{color_end}'.format(error=e, color_start=bcolors.OKGREEN, color_end=bcolors.ENDC)
+                print '{color_start}Success!{color_end}'.format(color_start=bcolors.OKGREEN, color_end=bcolors.ENDC)
             except cql.ProgrammingError as e:
                 print '{color_start}{error}{color_end}'.format(error=e, color_start=bcolors.FAIL, color_end=bcolors.ENDC)
                 if not force:
